@@ -11,7 +11,7 @@ import kodlamaio.hrms.business.abstracts.JobTitleService;
 import kodlamaio.hrms.entities.concretes.JobTitle;
 
 @RestController
-@RequestMapping("/api/jobtitle")
+@RequestMapping("/api/jobtitles")
 public class JobTitleController {
 	
 	private JobTitleService jobTitleService;
@@ -25,6 +25,7 @@ public class JobTitleController {
 	@GetMapping("/getall")
 	public List<JobTitle> getAll(){
 		return this.jobTitleService.getAll();
+		
 	}
 	
 }
