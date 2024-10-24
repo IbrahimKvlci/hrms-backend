@@ -1,5 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +36,16 @@ public class VerificationCodeCandidateManager implements VerificationCodeCandida
 
 	@Override
 	public Result validateCandidate(int candidateId, String code) {
-		if(verificationCodeCandidateDao.findByCandidateId(candidateId).get(0).getCode().equals(code)) {
+		VerificationCodeCandidate verificationCodeCandidate=verificationCodeCandidateDao.findByCandidateId(candidateId);
+		if(verificationCodeCandidate.isVerified()) {
+			return new ErrorResult("User was already verified!");
+		}
+		
+		if(verificationCodeCandidate.getCode().equals(code)) {
+			verificationCodeCandidate.setVerified(true);
+			verificationCodeCandidate.setVerifiedDate(new Date());
+			
+			verificationCodeCandidateDao.save(verificationCodeCandidate);
 			return new SuccessResult("Verified!");
 		}
 		return new ErrorResult("Wrong Code!");
