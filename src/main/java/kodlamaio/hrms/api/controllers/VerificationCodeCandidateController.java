@@ -22,7 +22,7 @@ public class VerificationCodeCandidateController {
 
 
 
-	@PostMapping("/validate")
+	@PostMapping("/validatecandidate")
 	public Result validate(int candidateId,String code) {
 		return this.verificationCodeCandidateService.validateCandidate(candidateId,code);
 	}
