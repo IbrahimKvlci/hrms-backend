@@ -7,12 +7,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.business.abstracts.EmployeeConfirmEmployerService;
 import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.business.abstracts.VerificationCodeEmployerService;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
+import kodlamaio.hrms.entities.concretes.EmployeeConfirmEmployer;
 import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.concretes.VerificationCodeEmployer;
 
@@ -21,12 +23,14 @@ public class EmployerManager implements EmployerService{
 	
 	private EmployerDao employerDao;
 	private VerificationCodeEmployerService verificationCodeEmployerService;
+	private EmployeeConfirmEmployerService employeeConfirmEmployerService;
 
 	@Autowired
-	public EmployerManager(EmployerDao employerDao,VerificationCodeEmployerService verificationCodeEmployerService) {
+	public EmployerManager(EmployerDao employerDao,VerificationCodeEmployerService verificationCodeEmployerService,EmployeeConfirmEmployerService employeeConfirmEmployerService) {
 		super();
 		this.employerDao = employerDao;
 		this.verificationCodeEmployerService=verificationCodeEmployerService;
+		this.employeeConfirmEmployerService=employeeConfirmEmployerService;
 	}
 
 	@Override
@@ -45,9 +49,11 @@ public class EmployerManager implements EmployerService{
 		
 		Employer savedEmployer= this.employerDao.save(employer);
 		
-		VerificationCodeEmployer verificationCodeEmployer=new VerificationCodeEmployer(0,"12345",false,null,savedEmployer.getId());
-		System.out.println(savedEmployer.getId());
+		VerificationCodeEmployer verificationCodeEmployer=new VerificationCodeEmployer(0,"1234567",false,null,savedEmployer.getId());
 		verificationCodeEmployerService.add(verificationCodeEmployer);
+		
+		EmployeeConfirmEmployer employeeConfirmEmployer=new EmployeeConfirmEmployer(0,1,false,null,savedEmployer.getId());
+		this.employeeConfirmEmployerService.add(employeeConfirmEmployer);
 
 		return new SuccessResult("Employer added!");
 	}
