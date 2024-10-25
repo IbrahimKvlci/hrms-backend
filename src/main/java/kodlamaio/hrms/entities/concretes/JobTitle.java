@@ -3,44 +3,25 @@ package kodlamaio.hrms.entities.concretes;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="job_titles")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobTitle {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
 	@Column(name="title")
 	private String title;
-	
-	public JobTitle() {
-		
-	}
-
-	public JobTitle(int id, String title) {
-		super();
-		this.id = id;
-		this.title = title;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 }
