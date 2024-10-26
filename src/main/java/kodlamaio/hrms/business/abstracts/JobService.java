@@ -4,12 +4,11 @@ import java.util.List;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.concretes.Job;
 
-public interface EmployerService {
-
-	Result add(Employer employer);
-	DataResult<List<Employer>> getAll(); 
-	Result changeJobActive(int employerId,int jobId,boolean active);
+public interface JobService {
+	Result add(Job job);
+	DataResult<List<Job>> getAllActives();
+	DataResult<List<Job>> getAllActivesSortedByPostingDate();
+	DataResult<List<Job>> getActivesByCompanyName(String companyName);
 }

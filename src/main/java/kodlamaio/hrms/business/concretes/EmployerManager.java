@@ -17,21 +17,25 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
+import kodlamaio.hrms.dataAccess.abstracts.JobDao;
 import kodlamaio.hrms.entities.concretes.EmployeeConfirmEmployer;
 import kodlamaio.hrms.entities.concretes.Employer;
+import kodlamaio.hrms.entities.concretes.Job;
 import kodlamaio.hrms.entities.concretes.VerificationCodeEmployer;
 
 @Service
 public class EmployerManager implements EmployerService{
 	
 	private EmployerDao employerDao;
+	private JobDao jobDao;
 	private VerificationCodeEmployerService verificationCodeEmployerService;
 	private EmployeeConfirmEmployerService employeeConfirmEmployerService;
 
 	@Autowired
-	public EmployerManager(EmployerDao employerDao,VerificationCodeEmployerService verificationCodeEmployerService,EmployeeConfirmEmployerService employeeConfirmEmployerService) {
+	public EmployerManager(EmployerDao employerDao,VerificationCodeEmployerService verificationCodeEmployerService,EmployeeConfirmEmployerService employeeConfirmEmployerService,JobDao jobDao) {
 		super();
 		this.employerDao = employerDao;
+		this.jobDao=jobDao;
 		this.verificationCodeEmployerService=verificationCodeEmployerService;
 		this.employeeConfirmEmployerService=employeeConfirmEmployerService;
 	}
@@ -80,6 +84,18 @@ public class EmployerManager implements EmployerService{
 	@Override
 	public DataResult<List<Employer>> getAll() {
 		return new SuccessDataResult<List<Employer>>(this.employerDao.findAll());
+	}
+
+	@Override
+	public Result changeJobActive(int employerId, int jobId,boolean active) {
+		Job job=this.jobDao.getById(jobId);
+		if(job.getEmployer().getId()!=employerId)
+			return new ErrorResult("The employer cannot change this Job Active. The employer can only change their own jobs!");
+		
+		job.setActive(active);
+		this.jobDao.save(job);
+		
+		return new SuccessResult("Job Active was changed!");
 	}
 
 }

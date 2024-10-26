@@ -6,31 +6,31 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper=true)
-@Table(name="employers")
+@NoArgsConstructor
+@Table(name="cities")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobs"})
-public class Employer extends User {
+public class City {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private int id;
 	
-	@Column(name="company_name")
-	private String companyName;
+	@Column(name="name")
+	private String name;
 	
-	@Column(name="web_address")
-	private String webAddress;
-	
-	@Column(name="phone_number")
-	private String phoneNumber;
-	
-	@OneToMany(mappedBy = "employer")
+	@OneToMany(mappedBy = "city")
 	private List<Job> jobs;
 }
