@@ -18,10 +18,10 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
 import kodlamaio.hrms.dataAccess.abstracts.JobDao;
-import kodlamaio.hrms.entities.concretes.EmployeeConfirmEmployer;
-import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.concretes.Job;
-import kodlamaio.hrms.entities.concretes.VerificationCodeEmployer;
+import kodlamaio.hrms.entities.concretes.users.Employer;
+import kodlamaio.hrms.entities.concretes.verifications.EmployeeConfirmEmployer;
+import kodlamaio.hrms.entities.concretes.verifications.VerificationCodeEmployer;
 
 @Service
 public class EmployerManager implements EmployerService{

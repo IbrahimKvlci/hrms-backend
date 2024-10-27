@@ -10,8 +10,8 @@ import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.VerificationCodeCandidateDao;
-import kodlamaio.hrms.entities.concretes.Candidate;
-import kodlamaio.hrms.entities.concretes.VerificationCodeCandidate;
+import kodlamaio.hrms.entities.concretes.users.Candidate;
+import kodlamaio.hrms.entities.concretes.verifications.VerificationCodeCandidate;
 
 @Service
 public class VerificationCodeCandidateManager implements VerificationCodeCandidateService{

@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities.concretes;
+package kodlamaio.hrms.entities.concretes.verifications;
 
 import java.util.Date;
 
@@ -12,17 +12,17 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Table(name="verification_code_employers")
 @EqualsAndHashCode(callSuper=true)
-@Table(name="employee_confirm_employers")
-public class EmployeeConfirmEmployer extends EmployeeConfirm {
-
+public class VerificationCodeEmployer extends VerificationCode{
+	
 	@Column(name="employer_id")
 	private int employerId;
 	
-	public EmployeeConfirmEmployer(int id,int employeeId,boolean isConfirmed,Date confirmedDate,int employerId) {
-		super(id,employeeId,isConfirmed,confirmedDate);
-		this.employerId=employerId;
+	public VerificationCodeEmployer(int id, String code, boolean isVerified, Date verifiedDate, int employerId) {
+		super(id, code, isVerified, verifiedDate);
+		this.employerId = employerId;
 	}
 }

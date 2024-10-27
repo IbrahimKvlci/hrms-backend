@@ -1,4 +1,6 @@
-package kodlamaio.hrms.entities.concretes;
+package kodlamaio.hrms.entities.concretes.verifications;
+
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,21 +15,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="users")
+@Table(name="verification_codes")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public class VerificationCode {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="email")
-	private String email;
+	@Column(name="code")
+	private String code;
 	
-	@Column(name="password")
-	private String password;
+	@Column(name="is_verified")
+	private boolean isVerified;
+	
+	@Column(name="verified_date")
+	private Date verifiedDate;
 }

@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities.concretes;
+package kodlamaio.hrms.entities.concretes.users;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

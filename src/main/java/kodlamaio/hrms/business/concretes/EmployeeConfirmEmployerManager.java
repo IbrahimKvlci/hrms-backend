@@ -10,7 +10,7 @@ import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmployeeConfirmEmployerDao;
-import kodlamaio.hrms.entities.concretes.EmployeeConfirmEmployer;
+import kodlamaio.hrms.entities.concretes.verifications.EmployeeConfirmEmployer;
 
 @Service
 public class EmployeeConfirmEmployerManager implements EmployeeConfirmEmployerService{

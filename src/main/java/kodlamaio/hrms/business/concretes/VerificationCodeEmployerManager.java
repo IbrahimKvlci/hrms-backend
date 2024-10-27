@@ -10,7 +10,7 @@ import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.VerificationCodeEmployerDao;
-import kodlamaio.hrms.entities.concretes.VerificationCodeEmployer;
+import kodlamaio.hrms.entities.concretes.verifications.VerificationCodeEmployer;
 
 @Service
 public class VerificationCodeEmployerManager implements VerificationCodeEmployerService{

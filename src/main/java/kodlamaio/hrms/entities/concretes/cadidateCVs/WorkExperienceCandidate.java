@@ -1,10 +1,9 @@
-package kodlamaio.hrms.entities.concretes;
-
-import java.util.Date;
+package kodlamaio.hrms.entities.concretes.cadidateCVs;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import kodlamaio.hrms.entities.concretes.WorkExperience;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,15 +13,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "verification_code_candidates")
+@Table(name = "work_experience_candidates")
 @EqualsAndHashCode(callSuper = true)
-public class VerificationCodeCandidate extends VerificationCode {
-	
+public class WorkExperienceCandidate extends WorkExperience {
+
 	@Column(name="candidate_id")
 	private int candidateId;
-
-	public VerificationCodeCandidate(int id, String code, boolean isVerified, Date verifiedDate, int candidateId) {
-		super(id, code, isVerified, verifiedDate);
-		this.candidateId = candidateId;
-	}
 }
