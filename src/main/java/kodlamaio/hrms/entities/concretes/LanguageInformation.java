@@ -15,7 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="langugae_information")
+@Table(name="language_informations")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -38,6 +38,5 @@ public class EducationInformation {
 	private String department;
 	
 	@Column(name="graduation_year")
-	@NotNull
-	private int graduationYear;
+	private String graduationYear;
 }
