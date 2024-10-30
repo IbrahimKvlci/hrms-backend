@@ -18,9 +18,8 @@ public class CloudinaryImageCloudManager implements ImageCloudService{
 	Dotenv dotenv = Dotenv.load();
 	Cloudinary cloudinary = new Cloudinary(dotenv.get("CLOUDINARY_URL"));
 
-	
 	@Override
-	public void upload(MultipartFile image,String name) {
+	public String upload(MultipartFile image) {
 		Map params1 = ObjectUtils.asMap(
 			    "use_filename", true,
 			    "unique_filename", true,
@@ -29,10 +28,12 @@ public class CloudinaryImageCloudManager implements ImageCloudService{
 		
 		try {
 			Map uploadResult = cloudinary.uploader().upload(image.getBytes(), params1);
+			return uploadResult.get("display_name").toString();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 }

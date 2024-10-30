@@ -8,5 +8,5 @@ import kodlamaio.hrms.entities.concretes.cadidateCVs.ImageCandidate;
 public interface ImageCandidateService {
 
 	Result add(ImageCandidate imageCandidate);
-	Result upload(MultipartFile file);
+	Result upload(MultipartFile file,int candidateId);
 }

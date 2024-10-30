@@ -1,6 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
 import java.io.File;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,8 +34,9 @@ public class ImageCandidateManager implements ImageCandidateService {
 	}
 
 	@Override
-	public Result upload(MultipartFile file) {
-		this.imageCloudService.upload(file);
+	public Result upload(MultipartFile file,int candidateId) {
+		String imageName= this.imageCloudService.upload(file);
+		add(new ImageCandidate(0, imageName, new Date(), candidateId));
 		return new SuccessResult("Uploaded");
 	}
 

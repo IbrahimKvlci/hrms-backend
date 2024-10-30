@@ -5,5 +5,5 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface ImageCloudService {
 
-	void upload(MultipartFile image,String name);
+	String upload(MultipartFile image);
 }

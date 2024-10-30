@@ -40,7 +40,7 @@ public class ImageCandidatesController {
 		    path = "/upload", 
 		    method = RequestMethod.POST, 
 		    consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public Result upload(@RequestPart MultipartFile file) {
-		return this.imageCandidateService.upload(file);
+	public Result upload(@RequestPart MultipartFile file,@RequestParam int candidateId) {
+		return this.imageCandidateService.upload(file,candidateId);
 	}
 }
