@@ -38,4 +38,5 @@ public class Image {
 	@NotNull
 	@NotBlank
 	private Date uploadedDate;
+	
 }

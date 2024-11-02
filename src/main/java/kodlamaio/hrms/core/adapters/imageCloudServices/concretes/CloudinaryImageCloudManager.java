@@ -15,6 +15,8 @@ import kodlamaio.hrms.core.adapters.imageCloudServices.abstracts.ImageCloudServi
 @Service
 public class CloudinaryImageCloudManager implements ImageCloudService{
 
+	final String imagePath="https://res.cloudinary.com/dh8jfywdg/image/upload/";
+	
 	Dotenv dotenv = Dotenv.load();
 	Cloudinary cloudinary = new Cloudinary(dotenv.get("CLOUDINARY_URL"));
 
@@ -34,6 +36,11 @@ public class CloudinaryImageCloudManager implements ImageCloudService{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public String getImagePath(String imageName) {
+		return imagePath+imageName;
 	}
 
 }

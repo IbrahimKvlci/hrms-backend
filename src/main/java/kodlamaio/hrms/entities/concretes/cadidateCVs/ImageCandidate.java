@@ -4,8 +4,12 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import kodlamaio.hrms.entities.concretes.Image;
+import kodlamaio.hrms.entities.concretes.users.Candidate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,9 +25,10 @@ public class ImageCandidate extends Image{
 	
 	public ImageCandidate(int id, String imageName, Date uploadedDate, int candidateId) {
 		super(id, imageName, uploadedDate);
-		this.candidateId = candidateId;
+		candidate.setId(candidateId);
 	}
 
-	@Column(name="candidate_id")
-	private int candidateId;
+	@OneToOne
+	@JoinColumn(name="candidate_id")
+	private Candidate candidate;
 }

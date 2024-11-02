@@ -39,9 +39,9 @@ public class WorkExperience {
 	
 	@Column(name="start_year")
 	@NotNull
-	private int startYear;
+	private String startYear;
 	
 	@Column(name="end_year")
 	@NotNull
-	private int endYear;
+	private String endYear;
 }

@@ -2,19 +2,31 @@ package kodlamaio.hrms.business.concretes;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
+import kodlamaio.hrms.business.abstracts.CoverLetterCandidateService;
+import kodlamaio.hrms.business.abstracts.EducationInformationCandidateService;
+import kodlamaio.hrms.business.abstracts.ImageCandidateService;
+import kodlamaio.hrms.business.abstracts.LanguageInformationCandidateService;
+import kodlamaio.hrms.business.abstracts.TalentCandidateService;
 import kodlamaio.hrms.business.abstracts.VerificationCodeCandidateService;
+import kodlamaio.hrms.business.abstracts.WebAddressCandidateService;
+import kodlamaio.hrms.business.abstracts.WorkExperienceCandidateService;
+import kodlamaio.hrms.core.adapters.imageCloudServices.abstracts.ImageCloudService;
 import kodlamaio.hrms.core.adapters.personValidators.abstracts.PersonInformationsValidator;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.ErrorDataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
+import kodlamaio.hrms.entities.concretes.dtos.CandidateCVDto;
+import kodlamaio.hrms.entities.concretes.dtos.CandidateCVMapper;
 import kodlamaio.hrms.entities.concretes.users.Candidate;
 import kodlamaio.hrms.entities.concretes.verifications.VerificationCodeCandidate;
 
@@ -23,14 +35,18 @@ public class CandidateManager implements CandidateService {
 
 	private CandidateDao candidateDao;
 	private VerificationCodeCandidateService verificationCodeCandidateService;
+	private ImageCloudService imageCloudService;
 	private PersonInformationsValidator personInformationsValidator;
+	private CandidateCVMapper candidateCVMapper;
 
 	@Autowired
-	public CandidateManager(CandidateDao candidateDao,PersonInformationsValidator personInformationsValidator,VerificationCodeCandidateService verificationCodeCandidateService) {
+	public CandidateManager(CandidateDao candidateDao,PersonInformationsValidator personInformationsValidator,VerificationCodeCandidateService verificationCodeCandidateService,ImageCloudService imageCloudService,CandidateCVMapper candidateCVMapper) {
 		super();
 		this.candidateDao = candidateDao;
 		this.personInformationsValidator=personInformationsValidator;
 		this.verificationCodeCandidateService=verificationCodeCandidateService;
+		this.imageCloudService=imageCloudService;
+		this.candidateCVMapper=candidateCVMapper;
 	}
 
 	@Override
@@ -66,6 +82,12 @@ public class CandidateManager implements CandidateService {
 	@Override
 	public DataResult<List<Candidate>> getAll() {
 		return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll());
+	}
+
+	@Override
+	public DataResult<CandidateCVDto> getCandidateCVById(int id) {
+		CandidateCVDto candidateCVDto=this.candidateDao.findById(id).map(candidateCVMapper::toDto).get();
+		return new SuccessDataResult<CandidateCVDto>(candidateCVDto); 
 	}
 	
 	
