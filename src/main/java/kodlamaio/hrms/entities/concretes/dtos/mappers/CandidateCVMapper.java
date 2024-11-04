@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities.concretes.dtos;
+package kodlamaio.hrms.entities.concretes.dtos.mappers;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +14,11 @@ import kodlamaio.hrms.entities.concretes.cadidateCVs.LanguageInformationCandidat
 import kodlamaio.hrms.entities.concretes.cadidateCVs.TalentCandidate;
 import kodlamaio.hrms.entities.concretes.cadidateCVs.WebAddressCandidate;
 import kodlamaio.hrms.entities.concretes.cadidateCVs.WorkExperienceCandidate;
+import kodlamaio.hrms.entities.concretes.dtos.CandidateCVDto;
+import kodlamaio.hrms.entities.concretes.dtos.EducationInformationCandidateDto;
+import kodlamaio.hrms.entities.concretes.dtos.LanguageInformationCandidateDto;
+import kodlamaio.hrms.entities.concretes.dtos.TalentCandidateDto;
+import kodlamaio.hrms.entities.concretes.dtos.WorkExperienceCandidateDto;
 import kodlamaio.hrms.entities.concretes.users.Candidate;
 
 @Component

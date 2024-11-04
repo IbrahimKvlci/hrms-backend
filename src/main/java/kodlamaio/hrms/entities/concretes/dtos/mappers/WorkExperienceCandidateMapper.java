@@ -1,8 +1,9 @@
-package kodlamaio.hrms.entities.concretes.dtos;
+package kodlamaio.hrms.entities.concretes.dtos.mappers;
 
 import org.springframework.stereotype.Component;
 
 import kodlamaio.hrms.entities.concretes.cadidateCVs.WorkExperienceCandidate;
+import kodlamaio.hrms.entities.concretes.dtos.WorkExperienceCandidateDto;
 
 @Component
 public class WorkExperienceCandidateMapper {

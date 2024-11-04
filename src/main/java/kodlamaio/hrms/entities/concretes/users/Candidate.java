@@ -30,6 +30,10 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","coverLetterCandidate","educationInformationCandidates","imageCandidate","languageInformationCandidates","talentCandidates","webAddressCandidate","workExperienceCandidates"})
 public class Candidate extends User{
 	
+	public Candidate(int candidateId) {
+		super(candidateId);
+	}
+	
 	@Column(name = "first_name")
 	private String firstName;
 	

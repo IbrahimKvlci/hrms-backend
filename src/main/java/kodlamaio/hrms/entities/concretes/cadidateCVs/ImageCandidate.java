@@ -23,9 +23,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class ImageCandidate extends Image{
 	
-	public ImageCandidate(int id, String imageName, Date uploadedDate, int candidateId) {
+	public ImageCandidate(int id, String imageName, Date uploadedDate, Candidate candidate) {
 		super(id, imageName, uploadedDate);
-		candidate.setId(candidateId);
+		this.candidate=candidate;
 	}
 
 	@OneToOne
