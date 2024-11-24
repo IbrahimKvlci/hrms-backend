@@ -89,6 +89,12 @@ public class CandidateManager implements CandidateService {
 		CandidateCVDto candidateCVDto=this.candidateDao.findById(id).map(candidateCVMapper::toDto).get();
 		return new SuccessDataResult<CandidateCVDto>(candidateCVDto); 
 	}
+
+	@Override
+	public DataResult<List<CandidateCVDto>> getAllCandidateCV() {
+		List<CandidateCVDto> candidateCVDtos=this.candidateDao.findAll().stream().map(candidateCVMapper::toDto).collect(Collectors.toList());
+		return new SuccessDataResult<List<CandidateCVDto>>(candidateCVDtos);
+	}
 	
 	
 	

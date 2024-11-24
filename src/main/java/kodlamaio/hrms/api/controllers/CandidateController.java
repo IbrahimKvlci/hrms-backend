@@ -52,6 +52,11 @@ public class CandidateController {
 		return this.candidateService.getCandidateCVById(candidateId);
 	}
 	
+	@GetMapping("/getAllCandidateCV")
+	public DataResult<List<CandidateCVDto>> getAllCandidateCV(){
+		return this.candidateService.getAllCandidateCV();
+	}
+	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions){
