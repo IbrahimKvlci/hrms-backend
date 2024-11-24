@@ -25,7 +25,8 @@ public class ImageCandidate extends Image{
 	
 	public ImageCandidate(int id, String imageName, Date uploadedDate, int candidateId) {
 		super(id, imageName, uploadedDate);
-		candidate.setId(candidateId);
+		this.candidate=new Candidate();
+		this.candidate.setId(candidateId);
 	}
 
 	@OneToOne
