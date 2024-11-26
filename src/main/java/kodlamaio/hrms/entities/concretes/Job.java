@@ -68,4 +68,12 @@ public class Job {
 	@JoinColumn(name="city_id")
 	@ManyToOne
 	private City city;
+	
+	@JoinColumn(name="working_time_id")
+	@ManyToOne
+	private WorkingTime workingTime;
+	
+	@JoinColumn(name="working_type_id")
+	@ManyToOne
+	private WorkingType workingType;
 }

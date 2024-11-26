@@ -44,6 +44,8 @@ public class CandidateCVMapper {
 
 	public CandidateCVDto toDto(Candidate candidate) {
 		int id=candidate.getId();
+		String firstName=candidate.getFirstName();
+		String lastName=candidate.getLastName();
 		String coverLetterText=candidate.getCoverLetterCandidate().getCoverLetterText();
 		List<EducationInformationCandidateDto> educationInformationCandidates=candidate.getEducationInformationCandidates().stream().map(educationInformationCandidateMapper::toDto).collect(Collectors.toList());
 		String imageFullPath=this.imageCloudService.getImagePath(candidate.getImageCandidate().getImageName());
@@ -53,6 +55,6 @@ public class CandidateCVMapper {
 		String githubAddress=candidate.getWebAddressCandidate().getGithubAddress();
 		List<WorkExperienceCandidateDto> workExperiences=candidate.getWorkExperienceCandidates().stream().map(workExperienceCandidateMapper::toDto).collect(Collectors.toList());
 		
-		return new CandidateCVDto(id, coverLetterText, educationInformationCandidates, imageFullPath, languageInormations, talents, linkedinAddress,githubAddress, workExperiences);
+		return new CandidateCVDto(id,firstName,lastName, coverLetterText, educationInformationCandidates, imageFullPath, languageInormations, talents, linkedinAddress,githubAddress, workExperiences);
 	}
 }

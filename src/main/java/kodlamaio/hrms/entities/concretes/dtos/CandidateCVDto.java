@@ -19,6 +19,8 @@ import lombok.NoArgsConstructor;
 public class CandidateCVDto {
 
 	private int id;
+	private String firstName;
+	private String lastName;
 	private String coverLetterText;
 	private List<EducationInformationCandidateDto> educationInformations;
 	private String imageFullPath;

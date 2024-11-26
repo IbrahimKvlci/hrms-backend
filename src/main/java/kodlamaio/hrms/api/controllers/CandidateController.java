@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +28,7 @@ import kodlamaio.hrms.entities.concretes.users.Candidate;
 
 @RestController
 @RequestMapping("/api/candidates")
+@CrossOrigin
 public class CandidateController {
 
 	private CandidateService candidateService;
@@ -45,6 +47,11 @@ public class CandidateController {
 	@GetMapping("/getAll")
 	public DataResult<List<Candidate>> getAll(){
 		return this.candidateService.getAll();
+	}
+	
+	@GetMapping("/getAllCandidateCV")
+	public DataResult<List<CandidateCVDto>> getAllCandidateCV(){
+		return this.candidateService.getAllCandidateCV();
 	}
 	
 	@GetMapping("/getCandidateCVById")
