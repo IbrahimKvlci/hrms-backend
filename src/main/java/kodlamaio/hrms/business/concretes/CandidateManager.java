@@ -26,7 +26,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 import kodlamaio.hrms.entities.concretes.dtos.CandidateCVDto;
-import kodlamaio.hrms.entities.concretes.dtos.CandidateCVMapper;
+import kodlamaio.hrms.entities.concretes.dtos.mappers.CandidateCVMapper;
 import kodlamaio.hrms.entities.concretes.users.Candidate;
 import kodlamaio.hrms.entities.concretes.verifications.VerificationCodeCandidate;
 
@@ -35,7 +35,6 @@ public class CandidateManager implements CandidateService {
 
 	private CandidateDao candidateDao;
 	private VerificationCodeCandidateService verificationCodeCandidateService;
-	private ImageCloudService imageCloudService;
 	private PersonInformationsValidator personInformationsValidator;
 	private CandidateCVMapper candidateCVMapper;
 
@@ -45,7 +44,6 @@ public class CandidateManager implements CandidateService {
 		this.candidateDao = candidateDao;
 		this.personInformationsValidator=personInformationsValidator;
 		this.verificationCodeCandidateService=verificationCodeCandidateService;
-		this.imageCloudService=imageCloudService;
 		this.candidateCVMapper=candidateCVMapper;
 	}
 

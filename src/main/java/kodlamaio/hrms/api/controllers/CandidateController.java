@@ -49,14 +49,14 @@ public class CandidateController {
 		return this.candidateService.getAll();
 	}
 	
-	@GetMapping("/getCandidateCVById")
-	public DataResult<CandidateCVDto> getCandidateCVById(@RequestParam int candidateId){
-		return this.candidateService.getCandidateCVById(candidateId);
-	}
-	
 	@GetMapping("/getAllCandidateCV")
 	public DataResult<List<CandidateCVDto>> getAllCandidateCV(){
 		return this.candidateService.getAllCandidateCV();
+	}
+	
+	@GetMapping("/getCandidateCVById")
+	public DataResult<CandidateCVDto> getCandidateCVById(@RequestParam int candidateId){
+		return this.candidateService.getCandidateCVById(candidateId);
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)

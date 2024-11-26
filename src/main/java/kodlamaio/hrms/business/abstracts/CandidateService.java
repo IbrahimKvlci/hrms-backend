@@ -10,6 +10,6 @@ import kodlamaio.hrms.entities.concretes.users.Candidate;
 public interface CandidateService {
 	Result add(Candidate candidate);
 	DataResult<List<Candidate>> getAll();
-	DataResult<CandidateCVDto> getCandidateCVById(int id);
 	DataResult<List<CandidateCVDto>> getAllCandidateCV();
+	DataResult<CandidateCVDto> getCandidateCVById(int id);
 }

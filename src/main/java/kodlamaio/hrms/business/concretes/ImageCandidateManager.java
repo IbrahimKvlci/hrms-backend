@@ -13,6 +13,7 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.ImageCandidateDao;
 import kodlamaio.hrms.entities.concretes.cadidateCVs.ImageCandidate;
+import kodlamaio.hrms.entities.concretes.users.Candidate;
 
 @Service
 public class ImageCandidateManager implements ImageCandidateService {
@@ -36,7 +37,7 @@ public class ImageCandidateManager implements ImageCandidateService {
 	@Override
 	public Result upload(MultipartFile file,int candidateId) {
 		String imageName= this.imageCloudService.upload(file);
-		add(new ImageCandidate(0, imageName, new Date(), candidateId));
+		add(new ImageCandidate(0, imageName, new Date(), new Candidate(candidateId)));
 		return new SuccessResult("Uploaded");
 	}
 
