@@ -3,6 +3,7 @@ package kodlamaio.hrms.business.concretes;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.EmployeeConfirmJobService;
 import kodlamaio.hrms.business.abstracts.JobService;
@@ -14,6 +15,7 @@ import kodlamaio.hrms.entities.concretes.Job;
 import kodlamaio.hrms.entities.concretes.users.Employee;
 import kodlamaio.hrms.entities.concretes.verifications.EmployeeConfirmJob;
 
+@Service
 public class EmployeeConfirmJobManager implements EmployeeConfirmJobService {
 
 	private EmployeeConfirmJobDao employeeConfirmJobDao;
