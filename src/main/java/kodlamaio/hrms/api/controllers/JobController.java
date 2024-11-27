@@ -50,5 +50,10 @@ public class JobController {
 		return this.jobService.getActivesByCompanyName(companyName);
 	}
 	
+	@GetMapping("/getJobById")
+	public DataResult<Job> getJobById(int id){
+		return this.jobService.getJobById(id);
+	}
+	
 	
 }

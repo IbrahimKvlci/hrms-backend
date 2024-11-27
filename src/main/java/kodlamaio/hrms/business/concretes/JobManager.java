@@ -46,5 +46,10 @@ public class JobManager implements JobService {
 	public DataResult<List<Job>> getActivesByCompanyName(String companyName) {
 		return new SuccessDataResult<List<Job>>(this.jobDao.getByIsActiveAndEmployer_CompanyName(true,companyName));
 	}
+
+	@Override
+	public DataResult<Job> getJobById(int id) {
+		return new SuccessDataResult<Job>(this.jobDao.findById(id).get());
+	}
 	
 }
