@@ -98,4 +98,9 @@ public class EmployerManager implements EmployerService{
 		return new SuccessResult("Job Active was changed!");
 	}
 
+	@Override
+	public DataResult<Employer> getById(int id) {
+		return new SuccessDataResult<Employer>(this.employerDao.findById(id).get());
+	}
+
 }

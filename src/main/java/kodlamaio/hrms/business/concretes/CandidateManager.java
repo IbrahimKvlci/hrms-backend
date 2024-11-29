@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.validation.ValidationException;
 import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.business.abstracts.CoverLetterCandidateService;
 import kodlamaio.hrms.business.abstracts.EducationInformationCandidateService;
@@ -50,16 +51,16 @@ public class CandidateManager implements CandidateService {
 	@Override
 	public Result add(Candidate candidate) {
 		if(areCandidateFieldsEmpty(candidate)) {
-			return new ErrorResult("Required fields cannot be empty!");	
+			throw new ValidationException("Required fields cannot be empty!");
 			}
 		for (Candidate candidateFromList : candidateDao.findAll()) {
 			if(candidateFromList.getEmail().equals(candidate.getEmail()))
-				return new ErrorResult("This email is already using!");
+				throw new IllegalArgumentException("This email is already using!");
 			if(candidateFromList.getIdentityNumber().equals(candidate.getIdentityNumber()))
-				return new ErrorResult("User with this identity number is already exists!");
+				throw new IllegalArgumentException("User with this identity number is already exists!");
 		}
 		if(!this.personInformationsValidator.isPersonInforamtionsValid(candidate.getIdentityNumber(), candidate.getFirstName(), candidate.getLastName(),candidate.getBirthYear())) {
-			return new ErrorResult("User's informations are not valid!");
+			throw new ValidationException("User's informations are not valid!");
 		}
 		
 		Candidate savedCandidate= candidateDao.save(candidate);

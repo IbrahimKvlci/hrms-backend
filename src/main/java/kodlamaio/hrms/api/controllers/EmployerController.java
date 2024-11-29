@@ -29,6 +29,11 @@ public class EmployerController {
 		this.employerService = employerService;
 	}
 	
+	@GetMapping("getById")
+	public DataResult<Employer> getById(@RequestParam int id){
+		return this.employerService.getById(id);
+	}
+	
 	@GetMapping("/getAll")
 	public DataResult<List<Employer>> getAll(){
 		return this.employerService.getAll();
