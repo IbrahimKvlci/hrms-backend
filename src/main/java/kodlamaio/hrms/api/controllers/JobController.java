@@ -15,6 +15,7 @@ import kodlamaio.hrms.business.abstracts.JobService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.Job;
+import kodlamaio.hrms.entities.concretes.dtos.JobAddDto;
 import kodlamaio.hrms.entities.concretes.users.Employer;
 
 @RestController
@@ -31,8 +32,8 @@ public class JobController {
 	}
 
 	@PostMapping("/add")
-	public Result add(@RequestBody Job job) {
-		return this.jobService.add(job);
+	public Result add(@RequestBody JobAddDto jobAddDto) {
+		return this.jobService.add(jobAddDto);
 	}
 	
 	@GetMapping("/getAllActives")

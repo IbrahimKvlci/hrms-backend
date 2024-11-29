@@ -3,6 +3,7 @@ package kodlamaio.hrms.business.concretes;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,7 +101,13 @@ public class EmployerManager implements EmployerService{
 
 	@Override
 	public DataResult<Employer> getById(int id) {
-		return new SuccessDataResult<Employer>(this.employerDao.findById(id).get());
+		Employer employer;
+		try {
+			employer=this.employerDao.findById(id).get();
+		} catch (NoSuchElementException e) {
+			throw new NoSuchElementException("There is not a employer with this id");
+		}
+		return new SuccessDataResult<Employer>(employer);
 	}
 
 }

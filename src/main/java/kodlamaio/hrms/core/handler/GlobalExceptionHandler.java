@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -33,28 +34,35 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    public ErrorDataResult<Object> handleValidationException(HttpMessageNotReadableException exception){
+    public ErrorDataResult<Object> handleException(HttpMessageNotReadableException exception){
         ErrorDataResult<Object> errors = new ErrorDataResult<Object>(exception.getMessage());
         return errors;
     }
 	
 	@ExceptionHandler(ValidationException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    public ErrorDataResult<Object> handleValidationException(ValidationException exception){
+    public ErrorDataResult<Object> handleException(ValidationException exception){
         ErrorDataResult<Object> errors = new ErrorDataResult<Object>(exception.getMessage());
         return errors;
     }
 	
 	@ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    public ErrorDataResult<Object> handleValidationException(IllegalArgumentException exception){
+    public ErrorDataResult<Object> handleException(IllegalArgumentException exception){
         ErrorDataResult<Object> errors = new ErrorDataResult<Object>(exception.getMessage());
         return errors;
     }
 
 	@ExceptionHandler(NoSuchElementException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    public ErrorDataResult<Object> handleValidationException(NoSuchElementException exception){
+    public ErrorDataResult<Object> handleException(NoSuchElementException exception){
+        ErrorDataResult<Object> errors = new ErrorDataResult<Object>(exception.getMessage());
+        return errors;
+    }
+	
+	@ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    public ErrorDataResult<Object> handleException(DataIntegrityViolationException exception){
         ErrorDataResult<Object> errors = new ErrorDataResult<Object>(exception.getMessage());
         return errors;
     }
